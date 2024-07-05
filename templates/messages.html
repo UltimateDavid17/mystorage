@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage - Nachrichten</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <b>Cloud</b>
+        <div class="right">
+            <a href="/" id="homeButton">Nachrichten</a>
+            <a href="/upload" id="uploadButton">⬆️ Upload</a>
+            <a href="/settings">
+                <img src="/api/avatar.png" alt="Profile Picture" id="avatar">
+            </a>
+        </div>
+    </nav>
+    <header>
+        <h1>Cloud Storage - Nachrichten</h1>
+    </header>
+    <main>
+        <h2>Nachrichten</h2>
+        <ul>
+            {% for message in messages %}
+                <li><strong>{{ message.author }}:</strong> {{ message.content }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <!-- Navigationselemente hier einfügen, wenn nötig -->
+    </nav>
+    <main>
+        <h1>File Information</h1>
+        <div>
+            <p><strong>Dateiname:</strong> {{ file_info.file_name }}</p>
+            <p><strong>Dateigröße (Bites):</strong> {{ file_info.file_size }}</p>
+            <p><strong>Hochgeladen von:</strong> {{ file_info.user }}</p>
+            <p><strong>Hochgeladen am:</strong> {{ file_info.upload_date }}</p>
+        </div>
+    </main>
+</body>
+</html>

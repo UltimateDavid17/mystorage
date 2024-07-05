@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datei herunterladen</title>
+</head>
+<body>
+    <h1>Datei herunterladen</h1>
+    <p>Dateiname: {{ file_name }}</p>
+    <p>Dateigröße: {{ file_size }} Bytes</p>
+    <p>Benutzer: {{ user['username'] }}</p>
+    <a href="/download/{{ download_token }}" target="_blank">Download Datei</a>
+</body>
+</html>

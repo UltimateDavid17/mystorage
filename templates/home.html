@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .file-box {
+            background-color: #1ABC9C; /* turquoise */
+            padding: 10px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <b>Cloud</b>
+        <div class="right">
+            <a href="/" id="homeButton">Nachrichten</a>
+            <a href="/upload" id="uploadButton">⬆️ Upload</a>
+            <a href="/settings">
+                <img src="/api/avatar.png" alt="Profile Picture" id="avatar">
+            </a>
+        </div>
+    </nav>
+    <br>
+    <main>
+        <h1>Cloud Storage</h1>
+        <div id="fileList">
+            {% for file in files %}
+            <div class="file-box">
+                <h2>{{ file }}</h2>
+                <a href="/cloud/private/{{ file }}/download">
+                    <button>Download 💾</button>
+                </a>
+                <a href="/cloud/private/{{ file }}/info">
+                    <button>Details ℹ️</button>
+                </a>
+                <a href="/cloud/private/{{ file }}/delete">
+                    <button>Delete 🗑️</button>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>

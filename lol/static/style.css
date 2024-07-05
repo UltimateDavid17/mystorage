@@ -1,0 +1,69 @@
+:root {
+    --gradient-bg: linear-gradient(90deg, #0c0e48, #02022f);
+    --gradient-button: linear-gradient(90deg, #44467c, #3c3c6e);
+}
+
+* {
+    box-sizing: border-box;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: var(--gradient-bg);
+    margin: 0 auto;
+}
+
+main {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    background: var(--gradient-button);
+    border: none;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+nav {
+    display: flex;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0 2rem;
+    justify-content: space-between;
+}
+
+nav .right {
+    justify-content: flex-end;
+}
+
+img#avatar {
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.link {
+    text-decoration: underline;
+}
+
+#uploadButton {
+    font-size: 40px;
+    margin-right: 5px;
+}
+
+button {
+    font-size: 16px;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einstellungen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-bar-inner {
+            height: 20px;
+            background-color: #1a0f7e;
+            width: {{ storage_usage_percentage }}%;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+    <br>
+    <main>
+        <h1>Einstellungen</h1>
+        <form method="POST">
+            <label for="display_name">Anzeigename:</label>
+            <input type="text" id="display_name" name="display_name" value="{{ user.display_name }}">
+            <button type="submit">Ändern</button>
+        </form>
+
+        <h2>Speicherplatz</h2>
+        <p>Verwendeter Speicherplatz: {{ (storage_usage / (1024 * 1024 * 1024))|round(2) }} GB</p>
+        <p>Maximaler Speicherplatz: {{ (storage_limit / (1024 * 1024 * 1024))|round(2) }} GB</p>
+
+        <div class="progress-bar">
+            <div class="progress-bar-inner">{{ storage_usage_percentage|round(2) }}% ({{ (storage_usage / (1024 * 1024 * 1024))|round(2) }} GB)</div>
+        </div>
+
+        <form method="POST">
+            <button type="submit" name="delete_account">Konto löschen</button>
+        </form>
+    </main>
+</body>
+</html>

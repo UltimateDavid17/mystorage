@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage - Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <style>
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(90deg, #0c0e48, #02022f); }
+            50% { background: linear-gradient(90deg, #44467c, #3c3c6e); }
+            100% { background: linear-gradient(90deg, #0c0e48, #02022f); }
+        }
+
+        body {
+            background: var(--gradient-bg);
+            animation: backgroundAnimation 10s infinite alternate;
+            margin: 0 auto;
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background-color: #007bff;
+            transition: width 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/">Nachrichten</a>
+        <a href="/upload">Upload</a>
+    </nav>
+    <header>
+        <h1>Cloud Storage - Upload</h1>
+    </header>
+    <main>
+        <h2>Datei hochladen</h2>
+        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput">
+            <button type="submit">Hochladen</button>
+        </form>
+    </main>
+    <div class="progress-bar">
+        <div id="progress" class="progress"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('uploadForm');
+            var fileInput = document.getElementById('fileInput');
+            var progressBar = document.getElementById('progress');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                var formData = new FormData();
+                formData.append('file', fileInput.files[0]);
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/upload', true);
+
+                xhr.upload.onprogress = function(e) {
+                    if (e.lengthComputable) {
+                        var percentComplete = (e.loaded / e.total) * 100;
+                        progressBar.style.width = percentComplete.toFixed(2) + '%';
+                    }
+                };
+
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        progressBar.style.width = '100%';
+                        setTimeout(function() {
+                            progressBar.style.width = '0%';
+                            window.location.href = '/';
+                        }, 1000);
+                    }
+                };
+
+                xhr.send(formData);
+            });
+        });
+    </script>
+</body>
+</html>

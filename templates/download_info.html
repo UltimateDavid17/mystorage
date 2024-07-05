@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Download</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <!-- Navigationselemente hier einfügen, wenn nötig -->
+    </nav>
+    <main>
+        <h1>File Download</h1>
+        <div>
+            <p><strong>Dateiname:</strong> {{ file_name }}</p>
+            <p><strong>Dateigröße:</strong> {{ file_size }} bytes</p>
+            <p><strong>Hochgeladen von:</strong> {{ user.username }}</p>
+            <p><strong>Hochgeladen am:</strong> {{ user.upload_date }}</p>
+            <a href="{{ url_for('download_file', download_token=download_token) }}">
+                <button>Download 💾</button>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

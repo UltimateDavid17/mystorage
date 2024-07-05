@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Storage - Nutzungsbedingungen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Cloud Storage - Nutzungsbedingungen</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Nutzungsbedingungen für Cloud Storage</h2>
+            <ol>
+                <li>
+                    <strong>Dienstleistungsbeschreibung:</strong>
+                    Der Cloud Storage ermöglicht es Ihnen, Dateien und Daten online zu speichern, zu verwalten und gemeinsam zu nutzen. Die Nutzung umfasst den Zugriff über verschiedene Plattformen und Geräte.
+                </li>
+                <li>
+                    <strong>Registrierung und Kontoverwaltung:</strong>
+                    Sie müssen ein Konto erstellen, um den Service zu nutzen. Alle Informationen müssen korrekt und aktuell sein. Sie sind für die Sicherheit Ihres Kontos verantwortlich und müssen Ihre Zugangsdaten sicher aufbewahren.
+                </li>
+                <li>
+                    <strong>Verantwortlichkeiten des Nutzers:</strong>
+                    <ul>
+                        <li>Sie sind allein verantwortlich für alle Aktivitäten, die unter Ihrem Konto stattfinden.</li>
+                        <li>Sie dürfen den Service nicht für rechtswidrige oder betrügerische Zwecke nutzen.</li>
+                        <li>Sie dürfen keine Viren oder schädliche Code-Elemente hochladen oder verbreiten.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Datenschutz und Sicherheit:</strong>
+                    <ul>
+                        <li>Wir ergreifen angemessene Maßnahmen, um Ihre Daten zu schützen, können jedoch keine absolute Sicherheit garantieren.</li>
+                        <li>Wir verwenden Ihre Daten gemäß unserer Datenschutzrichtlinie, die Sie auf unserer Website einsehen können.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Änderungen des Dienstes:</strong>
+                    Wir können den Service jederzeit ändern oder einstellen. Wir werden Sie über wesentliche Änderungen informieren.
+                </li>
+                <li>
+                    <strong>Beendigung:</strong>
+                    Sie können Ihr Konto jederzeit kündigen. Wir behalten uns das Recht vor, Ihr Konto zu sperren oder zu kündigen, wenn Sie gegen diese Nutzungsbedingungen verstoßen.
+                </li>
+                <li>
+                    <strong>Haftungsausschluss:</strong>
+                    Wir haften nicht für Verluste oder Schäden, die durch die Nutzung des Services entstehen, es sei denn, sie beruhen auf grober Fahrlässigkeit oder Vorsatz unsererseits.
+                </li>
+                <li>
+                    <strong>Geltendes Recht:</strong>
+                    Diese Nutzungsbedingungen unterliegen dem Recht des Landes, in dem unser Unternehmen seinen Sitz hat.
+                </li>
+                <li>
+                    <strong>Kontakt:</strong>
+                    Bei Fragen zu diesen Nutzungsbedingungen oder dem Service kontaktieren Sie uns bitte über die angegebenen Kontaktinformationen.
+                </li>
+            </ol>
+        </section>
+        <section>
+            <form action="{{ url_for('terms') }}" method="post">
+                <input type="checkbox" id="terms_accepted" name="terms_accepted">
+                <label for="terms_accepted">Ich akzeptiere die Nutzungsbedingungen von Cloud Storage.</label>
+                <br>
+                <button type="submit">Akzeptieren</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
